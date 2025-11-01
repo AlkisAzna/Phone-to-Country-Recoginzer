@@ -1,0 +1,12 @@
+services:
+  phone-api:
+    build: .
+    container_name: phone-api
+    ports:
+      - "8000:8000"
+    environment:
+      API_TOKEN: ${API_TOKEN:-dev-token}
+      WORKERS: 4
+      LOG_LEVEL: info
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+    restart: unless-stopped
